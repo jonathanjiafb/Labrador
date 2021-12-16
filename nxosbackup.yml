@@ -1,0 +1,36 @@
+---
+- name: Create local directory for today's backup
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: timestamp
+      local_action: command date +%Y%m%d
+      register: timestamp
+
+    - name: create local directory
+      file:
+        path: backup_folder/{{ timestamp.stdout }}
+        state: directory
+        mode: 0755
+
+- name: Backup NXOS Running config to local directory
+  hosts: MPK
+  connection: network_cli
+  gather_facts: no
+  ignore_errors: yes
+
+  tasks:
+    - name: get current timestamp
+      local_action: command date +%Y%m%d
+      register: timestamp
+
+    - name: get running config
+      nxos_command:
+        commands: show running
+      register: running_config
+
+    - name: copy running_config to local file
+      copy:
+        content: "{{ running_config.stdout[0] }}"
+        dest: "backup_folder/{{ timestamp.stdout }}/{{ inventory_hostname }}_{{ timestamp.stdout }}.txt"
