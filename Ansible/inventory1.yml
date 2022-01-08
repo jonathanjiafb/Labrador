@@ -1,0 +1,130 @@
+---
+all:
+  children:
+    MPK:
+      children:
+        sbx:
+          hosts:
+            mpk17-tip-plugfest-gw:
+              ansible_host: 192.168.0.26
+            sbx-r1-n9k-core1:
+              ansible_host: 192.168.0.253
+            sbx.r1.n9k.core2:
+              ansible_host: 192.168.0.254
+            sbx-r1-n9k-exgw2:
+              ansible_host: 192.168.0.165
+            sbx-r1-n9k-exgw1:
+              ansible_host: 192.168.0.164
+            sbx-r6-n3k-dist1:
+              ansible_host: 192.168.0.131
+            sbx-r6-n3k-dist2:
+              ansible_host: 192.168.0.132
+            sbx-r9-ims-ipam-asw:
+              ansible_host: 192.168.0.156
+            sbx-r9-ims-leaf01:
+              ansible_host: 192.168.0.157
+            sbx-r9-ims-leaf02:
+              ansible_host: 192.168.0.158
+            sbx-r9-ims-leaf05:
+              ansible_host: 192.168.0.166
+            sbx1-r9-ims-leaf03:
+              ansible_host: 192.168.0.159
+            sbx1-r9-ims-leaf04:
+              ansible_host: 192.168.0.160
+            SBX-IP-training-table01:
+              ansible_host: 192.168.0.140
+            SBX-IP-training-table-02:
+              ansible_host: 192.168.0.141
+            SBX1-R2-N3k-Access.1:
+              ansible_host: 192.168.0.134
+            SBX1-R3-N3k-Access.1:
+              ansible_host: 192.168.0.135
+            SBX2-R1-N3K.Access.1:
+              ansible_host: 192.168.0.138
+            SBX2-R2-N2K.Access.2:
+              ansible_host: 192.168.0.137
+        OPX:
+          hosts:
+            OPX-R4-DGW1:
+              ansible_host: 192.168.0.167
+            OPX-R4-DGW2:
+              ansible_host: 192.168.0.168
+            mpk-opx-10g-dgw03:
+              ansible_host: 192.168.0.173
+            mpk-opx-10g-dgw04:
+              ansible_host: 192.168.0.174
+            mpk-opx-R5-TOR:
+              ansible_host: 192.168.0.175
+            mpk-opx-R5-oob:
+              ansible_host: 192.168.0.176
+            mpk-opx-R6-TOR:
+              ansible_host: 192.168.0.177
+            mpk-opx-R6-oob:
+              ansible_host: 192.168.0.178
+            opx-r1-DCSG-asw-01:
+              ansible_host: 192.168.0.169
+            opx-r1-DCSG-asw-02:
+              ansible_host: 192.168.0.171
+            opx-r2-DCSG-asw-02:
+              ansible_host: 192.168.0.170
+        tip:
+          hosts:
+            tip-r6-dgw1:
+              ansible_host: 192.168.5.80
+            tip-r6-dgw2:
+              ansible_host: 192.168.5.81
+            tip-rx-vfCI_CD-01:
+              ansible_host: 192.168.5.57
+            tip-rx-vfCI_CD-02:
+              ansible_host: 192.168.5.58
+            tip-rx-vfCI_CD-oob:
+              ansible_host: 192.168.5.59
+            Tip1-R1-N3K-Access.1:
+              ansible_host: 192.168.5.7
+            Tip1-R3-N3K-Access.1:
+              ansible_host: 192.168.5.5
+            TIP1-R4-N3K-Access.1:
+              ansible_host: 192.168.5.2
+            mpk17-tip-ocn-asw:
+              ansible_host: 192.168.5.35
+    FRE:
+      hosts:
+        fre102-tiplocal8080-dgw1:
+          ansible_host: 10.28.6.4
+        fre102-local-lab-TIPWIFI-aw02:
+          ansible_host: 10.28.3.254
+        fre102-puma-iot-asw:
+          ansible_host: 10.28.17.4
+        fre102-tgsb-lab-TIPWIFI-aws:
+          ansible_host: 10.28.3.4
+    LDN:
+      children:
+        LHR:
+          hosts:
+            tip-r1-n9k-core1:
+              ansible_host: 10.25.100.2
+            tip-r1-n9k-core2:
+              ansible_host: 10.25.100.3
+            lon-tiplab-eng-dgw1:
+              ansible_host: 10.25.100.6
+            lon-tiplab-agr-r1:
+              ansible_host: 10.25.100.9
+            tip-sw1-n3k-2:
+              ansible_host: 10.25.100.5
+            tip-sw1-n3k-3:
+              ansible_host: 10.25.100.7
+  vars:
+    ansible_user: jonathanjia
+    ansible_network_os: nxos
+    ansible_connection: network_cli
+    ansible_password: !vault |
+      $ANSIBLE_VAULT;1.2;AES256;jonathanjia
+      39653261316461346336653062366534613461613833666363613831346162646565396565613966
+      6561633134363939336339313465306332396231646565300a623966636364373336313938383733
+      38333335343663383132313532653132373862666232633462616332643537356162303334363930
+      3239336164343864360a616638353964306533303266356334643938353535366433313163313436
+      3535
+
+...
+
+
